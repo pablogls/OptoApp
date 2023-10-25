@@ -1,6 +1,10 @@
 import { StatusBar } from 'expo-status-bar';
 import { StyleSheet, Text, View,  } from 'react-native';
 import React, { useState, useEffect } from 'react';
+import SplashScreen from './screens/SplashScreen';
+import { GLOBAL_URL } from './GlobalURL.js';
+
+
 
 
 export default function App() {
@@ -8,7 +12,7 @@ export default function App() {
 
   useEffect(() => {
     const intervalId = setInterval(() => {
-      fetch('http://opto.indama.cl/api/bitacora/datatest?api_key=key_cur_prod_ifnndPaqmTa5xQEi5Vcb9wKwbCf65c3BjVGyBB')
+      fetch(`${GLOBAL_URL}`)
         .then(response => response.json())
         .then(data => {
           const maquinas = data.data.map(maquina => {
@@ -35,6 +39,8 @@ export default function App() {
   }, []);
 
   return (
+
+    //<SplashScreen />
     <View>
       <View>
         <Text>Código de máquina: {maquinas[0]?.codigo}</Text>
@@ -159,7 +165,7 @@ export default function App() {
         <Text>Tiempo Activa: {maquinas[8]?.tiempoActiva}</Text>
         <Text>disponibilidad: {maquinas[8]?.disponibilidad}</Text>
         <Text>Cliente SAP: {maquinas[8]?.SAPCLIENTE}</Text>
-      </View>
+      </View> 
 
 
     </View>
