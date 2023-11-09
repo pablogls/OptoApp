@@ -3,6 +3,7 @@ import { StyleSheet, Text, View,  } from 'react-native';
 import React, { useState, useEffect } from 'react';
 import SplashScreen from './screens/SplashScreen';
 import { GLOBAL_URL } from './GlobalURL.js';
+import GlobalScreenLight from './screens/GlobalScreenLight';
 
 
 
@@ -40,8 +41,8 @@ export default function App() {
 
   return (
 
-    //<SplashScreen />
-    <View>
+    <SplashScreen />
+    /*<View>
       <View>
         <Text>Código de máquina: {maquinas[0]?.codigo}</Text>
         <Text>Estado: {maquinas[0]?.estado}</Text>
@@ -168,7 +169,7 @@ export default function App() {
       </View> 
 
 
-    </View>
+    </View>*/
   );
 };
 

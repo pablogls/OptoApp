@@ -87,7 +87,7 @@ const styles = StyleSheet.create({
   splashscreen: {
     flex: 1,
     width: "100%",
-    height: 800,
+    height: "100%",
     overflow: "hidden",
     backgroundColor: "transparent",
   },
