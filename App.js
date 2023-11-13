@@ -41,7 +41,7 @@ export default function App() {
 
   return (
 
-    <SplashScreen />
+    <GlobalScreenLight />
     /*<View>
       <View>
         <Text>Código de máquina: {maquinas[0]?.codigo}</Text>

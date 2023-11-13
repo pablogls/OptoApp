@@ -2,7 +2,7 @@ import * as React from "react";
 import { Text, StyleSheet, View } from "react-native";
 import { Image } from "expo-image";
 import { LinearGradient } from "expo-linear-gradient";
-import GlobalStyles from "../GlobalStyles";
+import GlobalStyles from "../styles/GlobalStyles";
 import * as Font from 'expo-font';
 
 const SplashScreen = () => {
