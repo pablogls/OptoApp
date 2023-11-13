@@ -293,19 +293,16 @@ const GlobalScreenLight = () => {
         {/* ... Contenido del appbar ... */}
 
         <View style={styles.selecopcionlight}>
-      <DropDownPicker
+      <RNPickerSelect
+        placeholder={{ label: 'Selecciona una opción...', value: '' }} // Cambia el valor a un string vacío
+        onValueChange={(value) => setSelectedValue(value)}
         items={dropdownItems}
-        placeholder="Selecciona una máquina..."
-        containerStyle={styles.pickerContainer}
-        style={styles.seleccionar }
-        itemStyle={{ justifyContent: 'flex-start' }}
-        dropDownStyle={{ backgroundColor: '#fafafa' }}
-        onChangeItem={(item) => setSelectedValue(item.value)}
-        zIndex={5000}
-        isVisible={true}
-        zIndexInverse={1000}
+        onOpen={toggleDropdown}
+        onClose={toggleDropdown}
+        useNativeAndroidPickerStyle={false}
       />
     </View>
+
       
 
       </View>
