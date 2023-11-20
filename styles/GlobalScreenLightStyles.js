@@ -473,7 +473,7 @@ export const styles = StyleSheet.create({
     },
     resultadoDatos: {
       left: 125,
-      width: 70,
+      width: 130,
       top: 0,
     },
     lineIcon: {
@@ -586,12 +586,12 @@ export const styles = StyleSheet.create({
       //fontFamily: FontFamily.poppinsMedium,
       fontWeight: "500",
       lineHeight: 15,
-      fontSize: FontSize.size_3xs,
+      fontSize: 9,
       textAlign: "center",
     },
     resultadoDatos2: {
-      left: 174,
-      width: 52,
+      left: 130,
+      width: 200,
       top: 0,
     },
     lineIcon1: {
@@ -854,9 +854,10 @@ export const styles = StyleSheet.create({
       marginLeft: 61,
     },
     selecopcionlight: {
-      top: 153,
-      flexDirection: "row",
-      alignItems: "center",
+      top: 150,
+      flexDirection: 'row',
+      justifyContent: 'center',
+      alignItems: 'center',
       paddingHorizontal: Padding.p_5xl,
       paddingVertical: Padding.p_smi,
       backgroundColor: Color.colorWhite,
@@ -866,24 +867,26 @@ export const styles = StyleSheet.create({
         width: 0,
         height: 2,
       },
-      shadowColor: "rgba(0, 0, 0, 0.25)",
+      shadowColor: 'rgba(0, 0, 0, 0.25)',
       borderRadius: Border.br_xl,
-      position: "absolute",
+      position: 'absolute',
       marginLeft: -156,
-      left: "50%",
+      left: '50%',
+      width: 312, // Añade esta línea
     },
-    seleccionar: {
-      borderWidth: 0
-    },
-
-
+    
     container: {
-      marginTop: 20,
-      marginLeft: 10,
-      marginRight: 10,
+      flex: 1,
+    justifyContent: 'center',
+    alignItems: 'center',
     },
     selectedText: {
       flex: 1,
+    },
+    
+    loadingIndicator: {
+      marginRight: 220,
+      marginTop: 90, // Ajusta este valor según tu preferencia para la posición horizontal
     },
     
     globalscreenlight: {
@@ -893,4 +896,27 @@ export const styles = StyleSheet.create({
       overflow: "hidden",
       backgroundColor: Color.colorGhostwhite_100,
     },
+});
+
+export const pickerSelectStyles = StyleSheet.create({
+  // Estilos específicos para el picker
+  // Puedes ajustar el color, tamaño del texto, etc. según tus necesidades
+  inputIOS: {
+    paddingHorizontal: 10,
+    paddingVertical: 8,
+    borderWidth: 0,
+    borderRadius: 8,
+    paddingRight: 10,
+    width: 300, // Añade esta línea
+    textAlign: 'center', // Añade esta línea
+},
+inputAndroid: {
+    paddingHorizontal: 10,
+    paddingVertical: 8,
+    borderWidth: 0,
+    borderRadius: 8,
+    paddingRight: 10,
+    width: 300, // Añade esta línea
+    textAlign: 'center', // Añade esta línea
+},
 });
