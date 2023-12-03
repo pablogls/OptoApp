@@ -5,8 +5,11 @@ import { Inter_800ExtraBold } from "@expo-google-fonts/inter";
 import { OpenSans_600SemiBold } from "@expo-google-fonts/open-sans";
 import { LinearGradient } from "expo-linear-gradient";
 import { GLOBAL_URL } from '../GlobalURL.js';
-import { TouchableOpacity as Pressable, Image, Text, View, TextInput, Padding, Select, TouchableOpacity, ActivityIndicator  } from "react-native";
+import { TouchableOpacity as Pressable, Image, Text, View, TextInput, Padding, Select, SafeAreaView, ActivityIndicator, ScrollView  } from "react-native";
 import RNPickerSelect from 'react-native-picker-select';
+import Speedometer from 'react-native-speedometer-chart';
+import { StatusBar } from 'expo-status-bar';
+
 
 
 const GlobalScreenLight = () => {
@@ -20,6 +23,7 @@ const GlobalScreenLight = () => {
     const maquinaSeleccionada = maquinas.find((maquina) => maquina.codigo === value);
     setMaquinaSeleccionada(maquinaSeleccionada);
   };
+  const [sensorData, setSensorData] = useState([]);
 
   // OBTENCIÓN Y ACTUALIZACIÓN DATOS DE LA API
   useEffect(() => {
@@ -78,13 +82,40 @@ const GlobalScreenLight = () => {
     return () => clearInterval(intervalId);
   }, [selectedValue]);
   
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const response = await fetch('http://opto.indama.cl/api/bitacora/sonometrotest?api_key=key_cur_prod_ifnndPaqmTa5xQEi5Vcb9wKwbCf65c3BjVGyBB');
+        const data = await response.json();
 
+        setSensorData(data.data);
+      } catch (error) {
+        console.error('Error fetching sensor data:', error);
+      }
+    };
+
+    // Llama a fetchData inmediatamente al cargar el componente
+    fetchData();
+
+    // Configura un intervalo para llamar a fetchData cada 3 segundos
+    const intervalId = setInterval(fetchData, 3000);
+
+    // Limpia el intervalo al desmontar el componente
+    return () => clearInterval(intervalId);
+  }, []);
+
+  const sonometro = sensorData.length > 0 ? parseFloat(sensorData[sensorData.length - 1].nSensor01).toFixed(2) : 0;
+  const temp1 = sensorData.length > 0 ? parseFloat(sensorData[sensorData.length - 1].nSensor02).toFixed(2) : 0;
+  const temp2 = sensorData.length > 0 ? parseFloat(sensorData[sensorData.length - 1].nSensor03).toFixed(2) : 0;
 
   // DATOS QUE MOSTRARÁ EL PICKER
   const dropdownItems = maquinas.map(maquina => ({
     label: "Máquina " + maquina.codigo,
     value: maquina.codigo,
   }));
+
+
+
 
    // CAMBIO DE SEGUNDOS A HORAS Y MINUTOS
   function timeConverter(segundos) {
@@ -144,7 +175,11 @@ const GlobalScreenLight = () => {
     }
 
     return (
+      
+      <SafeAreaView style={styles.safearea}>
+<StatusBar style="light" backgroundColor="#000080" translucent={false} />
       <View style={styles.globalscreenlight}>
+
           <LinearGradient
             style={[styles.gradient]}
             locations={[0, 1]}
@@ -165,8 +200,10 @@ const GlobalScreenLight = () => {
         <View style={[styles.card, styles.cardLayout]}>
           <View style={[styles.cardChild, styles.cardLayout]} />
         </View>
+        <ScrollView vertical={true} style={styles.scrollView}>
         <View style={[styles.scroll, styles.scrollLayout]}>
-          <View style={[styles.datosMaquina, styles.datosLayout2]}>
+
+          <View style={[styles.datosMaquina, styles.datosLayout2, { height: 1060 }]}>
             <View style={[styles.datosMaquinaChild, styles.appbarShadowBox]} />
             <View style={[styles.tablaDatos, styles.tablaLayout4]}>
               <View style={[styles.tablaDatosChild, styles.tablaChildLayout1]} />
@@ -181,7 +218,7 @@ const GlobalScreenLight = () => {
                   <Text style={[styles.mquina, styles.minTypo]}>Máquina</Text>
                   <Text style={[styles.estado, styles.minTypo]}>Estado</Text>
                   <Text style={[styles.velocidad, styles.minTypo]}>Velocidad</Text>
-                  <Text style={[styles.velocidadMax, styles.minTypo]}>Velocidad Max</Text>
+                  <Text style={[styles.velocidadMax, styles.minTypo]}>Vel. Max</Text>
                   <Text style={[styles.cantidad, styles.minTypo]}>Cantidad</Text>
                   <Text style={[styles.cantidadXMin, styles.minTypo]}>Cantidad x Min</Text>
                   <Text style={[styles.inicio, styles.minTypo]}>Inicio</Text>
@@ -195,15 +232,15 @@ const GlobalScreenLight = () => {
                 <View style={[styles.resultadoDatos, styles.datosLayout1]}>
                   <Text style={[styles.mquina, styles.minTypo]}>{`Máquina ${maquinaSeleccionada.codigo}`}</Text>
                   <Text style={[styles.detenida, styles.minTypo]}>{maquinaSeleccionada.estado === "1" ? "Activa" : "Detenida"}</Text>
-                  <Text style={[styles.text2, styles.minTypo]}>{parseFloat(maquinaSeleccionada.velocidad).toFixed(2)}</Text>
-                  <Text style={[styles.text3, styles.minTypo]}>{parseFloat(maquinaSeleccionada.velocidadMax).toFixed(2)}</Text>
-                  <Text style={[styles.text4, styles.minTypo]}>{parseFloat(maquinaSeleccionada.cantidad).toFixed(0)}</Text>
-                  <Text style={[styles.text5, styles.minTypo]}>{parseFloat(maquinaSeleccionada.cantidadMin).toFixed(2)}</Text>
-                  <Text style={[styles.text6, styles.minTypo]}>{formatFechaSeg(maquinaSeleccionada.inicio)}</Text>
-                  <Text style={[styles.text, styles.minTypo]}>{formatFechaSeg(maquinaSeleccionada.ultimoStatus)}</Text>
+                  <Text style={[styles.text2, styles.minTypo]}>{maquinaSeleccionada.velocidad !== null ? parseFloat(maquinaSeleccionada.velocidad).toFixed(2) : '-'}</Text>
+                  <Text style={[styles.text3, styles.minTypo]}>{maquinaSeleccionada.velocidadMax !== null ? parseFloat(maquinaSeleccionada.velocidadMax).toFixed(2) : '-'}</Text>
+                  <Text style={[styles.text4, styles.minTypo]}>{maquinaSeleccionada.cantidad !== null ? parseFloat(maquinaSeleccionada.cantidad).toFixed(0) : '-'}</Text>
+                  <Text style={[styles.text5, styles.minTypo]}>{maquinaSeleccionada.cantidadMin !== null ? parseFloat(maquinaSeleccionada.cantidadMin).toFixed(2) : '-'}</Text>
+                  <Text style={[styles.text6, styles.minTypo]}>{maquinaSeleccionada.inicio !== null ? formatFechaSeg(maquinaSeleccionada.inicio) : '-'}</Text>
+                  <Text style={[styles.text, styles.minTypo]}>{maquinaSeleccionada.ultimoStatus !== null ? formatFechaSeg(maquinaSeleccionada.ultimoStatus) : '-'}</Text>
                   <Text style={[styles.min, styles.minTypo]}>{maquinaSeleccionada.tiempoActiva !== null ? timeConverter(maquinaSeleccionada.tiempoActiva) : ''}</Text>
-                  <Text style={[styles.text1, styles.minTypo]}>{`${parseFloat(maquinaSeleccionada.disponibilidad).toFixed(2)}%`}</Text>
-                  <Text style={[styles.kw, styles.minTypo]}>{`${Number(maquinaSeleccionada.potencia).toLocaleString('en-US', {maximumFractionDigits: 0})} kW`}</Text>
+                  <Text style={[styles.text1, styles.minTypo]}>{maquinaSeleccionada.disponibilidad !== null ? `${parseFloat(maquinaSeleccionada.disponibilidad).toFixed(2)}%` : '-'}</Text>
+                  <Text style={[styles.kw, styles.minTypo]}>{maquinaSeleccionada.potencia !== null ? `${Number(maquinaSeleccionada.potencia).toLocaleString('en-US', {maximumFractionDigits: 0})} kW` : '-'}</Text>
                 </View>
                 )}
 
@@ -223,7 +260,7 @@ const GlobalScreenLight = () => {
               <View style={[styles.tablaDatos2Child1, styles.tablaLayout1]} />
               <View style={[styles.datos2, styles.datosLayout]}>
                 <View style={[styles.nombreDatos2, styles.datosLayout]}>
-                  <Text style={[styles.mquina, styles.minTypo]}>Ultima Fecha Produccion</Text>
+                  <Text style={[styles.mquina, styles.minTypo]}>Ult. Fecha Prod.</Text>
                   <Text style={[styles.item, styles.itemPosition]}>ITEM</Text>
                   <Text style={[styles.cliente, styles.minTypo]}>Cliente</Text>
                   <Text style={[styles.sp, styles.minTypo]}>SP</Text>
@@ -250,52 +287,53 @@ const GlobalScreenLight = () => {
               </View>
             </View>
           </View>
+
+          {/*  SONOMETRO */}
+
           <View style={[styles.tablaSonometro, styles.tablaLayout]}>
             <View style={styles.tablaChildShadowBox} />
             <Text style={[styles.sonmetroDb, styles.cr2Typo]}>Sonómetro (dB)</Text>
             <View style={[styles.sonometro, styles.sonometroLayout]}>
               <Text style={[styles.min1, styles.cr2Typo]}>Min</Text>
               <Text style={[styles.max, styles.cr2Typo]}>Max</Text>
-              <Image
-                style={[styles.sonometroChild, styles.childLayout]}
-                contentFit="cover"
-                source={require("../assets/ellipse-6.png")}
-              />
-              <Text style={[styles.text14, styles.textTypo]}>0</Text>
-              <View style={[styles.sonometroItem, styles.itemLayout]} />
+
+              <View style={[styles.sonometroChild, styles.childLayout]}>
+              <Speedometer size={188}value={parseFloat(sonometro)} totalValue={100} showIndicator/>
+              </View>
+              <Text style={[styles.text14, styles.textTypo]}>{parseFloat(sonometro).toFixed(2)}</Text>
             </View>
           </View>
+
+          {/*  TEMP1 */}
+
           <View style={[styles.tablaTemSolubleC, styles.tablaLayout]}>
             <View style={styles.tablaChildShadowBox} />
             <View style={styles.temSolubleC}>
               <Text style={[styles.min2, styles.min2Typo]}>Min</Text>
-              <Text style={[styles.max1, styles.min2Typo]}>Max</Text>
-              <Image
-                style={[styles.temSolubleCChild, styles.temPosition]}
-                contentFit="cover"
-                source={require("../assets/ellipse-61.png")}
-              />
-              <Text style={[styles.text15, styles.textTypo]}>0</Text>
-              <View style={[styles.temSolubleCItem, styles.temPosition]} />
-              <Text style={[styles.cr2Tem, styles.cr2Typo]}>CR2 - Tem. Soluble (°C)</Text>
+              <Text style={[styles.max2, styles.min2Typo]}>Max</Text>
+              <View style={[styles.temp1Child, styles.childLayout]}>
+
+                  <Speedometer size={188} value={parseFloat(temp1)} totalValue={100} showIndicator/>
+
+              </View>
+              <Text style={[styles.text15, styles.textTypo]}>{parseFloat(temp1).toFixed(2)}</Text>
+              <Text style={[styles.cr2Tem, styles.cr2Typo]}>TB2 - Tem. Soluble (°C)</Text>
             </View>
           </View>
-          <View style={[styles.tablaTemTinaEnfriamiento, styles.scrollLayout]}>
+
+          {/*  TEMP2 */}
+          
+          <View style={styles.tablaTemTinaEnfriamiento}>
             <View style={styles.tablaChildShadowBox} />
             <View style={[styles.temTinaEnfriamientoC, styles.sonometroLayout]}>
               <Text style={[styles.min1, styles.cr2Typo]}>Min</Text>
               <Text style={[styles.max, styles.cr2Typo]}>Max</Text>
-              <Image
-                style={[styles.sonometroChild, styles.childLayout]}
-                contentFit="cover"
-                source={require("../assets/ellipse-62.png")}
-              />
-              <Text style={[styles.text14, styles.textTypo]}>0</Text>
-              <View style={[styles.sonometroItem, styles.itemLayout]} />
+              <View style={[styles.sonometroChild, styles.childLayout]}>
+              <Speedometer size={188} value={parseFloat(temp2)} totalValue={100} showIndicator/>
             </View>
-            <Text style={[styles.cr2Tem1, styles.cr2Typo]}>
-              CR2 - Tem. Tina enfriamiento (°C)
-            </Text>
+              <Text style={[styles.text14, styles.textTypo]}>{parseFloat(temp2).toFixed(2)}</Text>
+            </View>
+            <Text style={[styles.cr2Tem1, styles.cr2Typo]}>TB2 - Tem. Tina enfriamiento (°C)</Text>
           </View>
 
           {loading ? (
@@ -316,8 +354,9 @@ const GlobalScreenLight = () => {
   )
 )}
         </View>
+        </ScrollView>
 
-        {/*  APPBAR */}
+ 
         <View style={[styles.appbar, styles.appbarChildLayout]}>
           <View style={[styles.appbarChild, styles.appbarChildLayout]} />
           <View style={[styles.opcionGlobal, styles.appbarChildLayout]}>
@@ -353,6 +392,7 @@ const GlobalScreenLight = () => {
               onPress={() => {}}/>
           </View>
         </View>
+        
 
         {/*  APPBAR */}
         
@@ -370,6 +410,8 @@ const GlobalScreenLight = () => {
       />
       </View>
       </View>
+
+      </SafeAreaView>
     );
   };
   

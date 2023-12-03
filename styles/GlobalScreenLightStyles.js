@@ -25,8 +25,8 @@ export const styles = StyleSheet.create({
 
     },
     scrollLayout: {
-      width: 312,
-      position: "absolute",
+      top: 50,
+      width: "100%",
     },
     datosLayout2: {
       height: 336,
@@ -40,7 +40,7 @@ export const styles = StyleSheet.create({
       shadowRadius: 10,
       shadowOffset: {
         width: 0,
-        height: 2,
+        height: 1,
       },
       shadowColor: "rgba(0, 0, 0, 0.25)",
     },
@@ -125,11 +125,11 @@ export const styles = StyleSheet.create({
     },
     childLayout: {
       marginLeft: -93,
-      height: 178,
+      height: 179,
       width: 186,
     },
     textTypo: {
-      marginLeft: -5,
+      marginLeft: -16.5,
       fontSize: FontSize.size_sm,
       color: Color.colorBlack,
       lineHeight: 15,
@@ -185,6 +185,9 @@ export const styles = StyleSheet.create({
     tituloChild: {
       backgroundColor: "transparent",
     },
+    safearea: {
+      flex: 1,
+    },
     eyeicon: {
       marginLeft: -32.5,
       width: 143,
@@ -192,6 +195,7 @@ export const styles = StyleSheet.create({
       top: "0%",
       height: "100%",
       left: "50%",
+      opacity:0.08,
     },
     global: {
       marginLeft: -110.5,
@@ -377,7 +381,7 @@ export const styles = StyleSheet.create({
     nombreDatos: {
       top: 1,
       left: 7,
-      width: 76,
+      width: 100,
       height: 175,
       position: "absolute",
     },
@@ -608,7 +612,6 @@ export const styles = StyleSheet.create({
       top: 215,
     },
     datosMaquina: {
-      position: "absolute",
     },
     tablaChildShadowBox: {
       height: 171,
@@ -630,7 +633,7 @@ export const styles = StyleSheet.create({
     sonmetroDb: {
       marginLeft: -57,
       top: 11,
-      left: "50%",
+      left: "52%",
     },
     min1: {
       left: 1,
@@ -640,13 +643,27 @@ export const styles = StyleSheet.create({
       left: 157,
       top: 96,
     },
+    min2: {
+      left: 1,
+      top: 96,
+    },
+    max2: {
+      left: 157,
+      top: 96,
+    },
     sonometroChild: {
       left: "50%",
       top: 0,
       position: "absolute",
     },
+    temp1Child: {
+      left: "50%",
+      top: 25,
+      position: "absolute",
+    },
     text14: {
-      top: 66,
+      textAlign: "center",
+      top: 108,
     },
     sonometroItem: {
       left: "50%",
@@ -659,7 +676,7 @@ export const styles = StyleSheet.create({
       height: 178,
     },
     tablaSonometro: {
-      top: 357,
+      top: 350,
     },
     min2: {
       left: 1,
@@ -673,7 +690,7 @@ export const styles = StyleSheet.create({
       width: 186,
     },
     text15: {
-      top: 92,
+      top: 136,
     },
     temSolubleCItem: {
       height: 46,
@@ -685,7 +702,7 @@ export const styles = StyleSheet.create({
     },
     cr2Tem: {
       marginLeft: -85,
-      left: "50%",
+      left: "58%",
       top: 0,
     },
     temSolubleC: {
@@ -696,19 +713,20 @@ export const styles = StyleSheet.create({
       position: "absolute",
     },
     tablaTemSolubleC: {
-      top: 553,
+      top: 538,
     },
     temTinaEnfriamientoC: {
       left: 65,
       top: 44,
     },
     cr2Tem1: {
-      marginLeft: -121,
+      marginLeft: -100,
       top: 18,
-      left: "50%",
+      left: 155,
+      
     },
     tablaTemTinaEnfriamiento: {
-      top: 746,
+      top: -335,
       height: 222,
       left: 0,
     },
@@ -721,9 +739,15 @@ export const styles = StyleSheet.create({
     },
     scroll: {
       top: 222,
-      height: 494,
+      height: 1000,
       marginLeft: -156,
       left: "50%",
+      width: "100%",
+    },
+
+    scrollView: {
+      top: "-38%",
+      flex: 1,
     },
     appbarChild: {
       backgroundColor: "#122a4e",
@@ -754,7 +778,7 @@ export const styles = StyleSheet.create({
       top: 35,
       fontWeight: "800",
       //fontFamily: FontFamily.interExtraBold,
-      width: 39,
+      width: 45,
       fontSize: FontSize.size_xs,
       textAlign: "center",
       color: Color.colorWhite,
@@ -823,19 +847,21 @@ export const styles = StyleSheet.create({
       position: "absolute",
     },
     appbar: {
-      top: 725,
-      width: 350,
-      height: 60,
+      top: '58.5%', // Ajusta este valor según tus necesidades
+      width: '80%',
+      left: '7.3%',
+      height: '10%', // Ajusta este valor según tus necesidades
       alignSelf: 'center',
       shadowOpacity: 1,
       elevation: 10,
       shadowRadius: 10,
       shadowOffset: {
         width: 0,
-        height: 2,
+        height: 6,
       },
-      shadowColor: "rgba(0, 0, 0, 0.25)",
+      shadowColor: 'rgba(0, 0, 0, 0.25)',
     },
+  
     vectorIcon: {
       width: 16,
       height: 13,
@@ -854,7 +880,7 @@ export const styles = StyleSheet.create({
       marginLeft: 61,
     },
     selecopcionlight: {
-      top: 150,
+      top: 145,
       flexDirection: 'row',
       justifyContent: 'center',
       alignItems: 'center',
@@ -885,14 +911,14 @@ export const styles = StyleSheet.create({
     },
     
     loadingIndicator: {
-      marginRight: 220,
-      marginTop: 90, // Ajusta este valor según tu preferencia para la posición horizontal
+      marginRight: 10,
+      right: "37%",
+      marginTop: -1190, // Ajusta este valor según tu preferencia para la posición horizontal
     },
     
     globalscreenlight: {
-      flex: 1,
       width: "100%",
-      height: 800,
+      height: 1300,
       overflow: "hidden",
       backgroundColor: Color.colorGhostwhite_100,
     },
