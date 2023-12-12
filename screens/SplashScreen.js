@@ -2,7 +2,7 @@ import * as React from "react";
 import { Text, StyleSheet, View } from "react-native";
 import { Image } from "expo-image";
 import { LinearGradient } from "expo-linear-gradient";
-import GlobalStyles from "../GlobalStyles";
+import GlobalStyles from "../styles/GlobalStyles";
 import * as Font from 'expo-font';
 
 const SplashScreen = () => {
@@ -31,8 +31,8 @@ const SplashScreen = () => {
       colors={["#3b6098", "#11294e"]}
     >
       <View style={[styles.titulo, styles.tituloLayout]}>
-        <Text style={[styles.opto, styles.optoPosition]}>OPTO</Text>
-        <Text style={[styles.indama, styles.optoPosition]}>Indama</Text>
+        {/*<Text style={[styles.opto, styles.optoPosition]}>OPTO</Text>
+        <Text style={[styles.indama, styles.optoPosition]}>Indama</Text>*/}
         <Image
           style={[styles.logooptoIcon, styles.tituloLayout]}
           contentFit="cover"
@@ -45,7 +45,7 @@ const SplashScreen = () => {
 
 const styles = StyleSheet.create({
   tituloLayout: {
-    width: 200,
+    heigh: 400,
     position: "absolute",
   },
   optoPosition: {
@@ -70,10 +70,10 @@ const styles = StyleSheet.create({
     fontFamily: GlobalStyles.FontFamily.poppinsSemiBold,
   },
   logooptoIcon: {
-    top: 0,
-    left: 0,
-    height: 200,
-    width: 200,
+    top: 120,
+    left: -15,
+    height: 250,
+    width: 250,
     position: "absolute",
   },
   titulo: {
@@ -81,13 +81,13 @@ const styles = StyleSheet.create({
     top: 184,
     height: 305,
     left: "50%",
-    width: 200,
+    width: 400,
     position: "absolute",
   },
   splashscreen: {
     flex: 1,
     width: "100%",
-    height: 800,
+    height: "100%",
     overflow: "hidden",
     backgroundColor: "transparent",
   },
