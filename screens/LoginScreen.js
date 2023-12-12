@@ -6,8 +6,12 @@ import { OpenSans_600SemiBold } from "@expo-google-fonts/open-sans";
 import { LinearGradient } from "expo-linear-gradient";
 import { FontAwesomeIcon } from '@fortawesome/react-native-fontawesome'
 import { faAngleRight } from '@fortawesome/free-solid-svg-icons';
+import { useNavigation } from "@react-navigation/native";
+import InformeScreenLight from "./InformeScreenLight";
 
 const LogInScreen = () => {
+
+  const navigation = useNavigation();
 
   const [fontsLoaded] = useFonts({
     Poppins_400Regular,
@@ -49,7 +53,7 @@ const LogInScreen = () => {
               </View>
               <View style={[styles.fieldContent, styles.fieldContentBg]}>
                 <TextInput
-                  style={{ ...styles.placeholder, ...styles.ingresarTypo, fontFamily: "Poppins_400Regular", color: "black"  }}
+                  style={{ ...styles.placeholder, ...styles.ingresarTypo, fontFamily: "Poppins_400Regular", color: "black" }}
                   placeholder="Nombre de usuario"
                 />
               </View>
@@ -60,7 +64,7 @@ const LogInScreen = () => {
               </View>
               <View style={[styles.fieldContent, styles.fieldContentBg]}>
                 <TextInput
-                  style={{ ...styles.placeholder, ...styles.ingresarTypo, fontFamily: "Poppins_400Regular", color: "black"  }}
+                  style={{ ...styles.placeholder, ...styles.ingresarTypo, fontFamily: "Poppins_400Regular", color: "black" }}
                   placeholder="***********"
                   secureTextEntry={true} // Asegura que el texto esté oculto
                 />
@@ -68,10 +72,18 @@ const LogInScreen = () => {
             </View>
           </View>
           <View style={styles.containerIngresar}>
-            <Pressable style={styles.buttonIngresar}>
+            <Pressable
+              style={styles.buttonIngresar}
+              onPress={() => {
+                // Realiza cualquier lógica de autenticación o validación aquí si es necesario
+            
+                // Navega a la pantalla InformeScreenLight
+                navigation.navigate("InformeScreenLight");
+              }}
+            >
               <Text style={{ ...styles.ingresar, ...styles.ingresarTypo, fontFamily: "Poppins_400Regular" }}>Ingresar</Text>
               <View style={styles.iconContainer}>
-                <FontAwesomeIcon icon={faAngleRight} size={23} style={{ color: "#ffffff", }} />
+                <FontAwesomeIcon icon={faAngleRight} size={23} style={{ color: "#ffffff" }} />
               </View>
             </Pressable>
           </View>
