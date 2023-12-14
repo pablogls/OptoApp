@@ -3,6 +3,7 @@ import React, { useState, useEffect } from 'react';
 import SplashScreen from './screens/SplashScreen';
 import { GLOBAL_URL } from './GlobalURL.js';
 import GlobalScreenLight from './screens/GlobalScreenLight';
+import Notification from './screens/Notification';
 
 
 
@@ -39,7 +40,7 @@ export default function App() {
   }, []);
 
   return (
-    <GlobalScreenLight />
+    <Notification />
 
 
   );

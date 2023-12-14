@@ -288,7 +288,7 @@ const GlobalScreenLight = () => {
             </View>
           </View>
 
-          {/*  SONOMETRO */}
+          {/*  SONOMETRO  */}
 
           <View style={[styles.tablaSonometro, styles.tablaLayout]}>
             <View style={styles.tablaChildShadowBox} />
@@ -321,7 +321,7 @@ const GlobalScreenLight = () => {
             </View>
           </View>
 
-          {/*  TEMP2 */}
+          {/*  TEMP2  */}
           
           <View style={styles.tablaTemTinaEnfriamiento}>
             <View style={styles.tablaChildShadowBox} />
@@ -353,6 +353,7 @@ const GlobalScreenLight = () => {
     />
   )
 )}
+
         </View>
         </ScrollView>
 
