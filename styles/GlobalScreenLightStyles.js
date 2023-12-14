@@ -847,17 +847,17 @@ export const styles = StyleSheet.create({
       position: "absolute",
     },
     appbar: {
-      top: '58.5%', // Ajusta este valor según tus necesidades
-      width: '80%',
+      top: '30.5%', // Ajusta este valor según tus necesidades
+      width: '100%',
       left: '7.3%',
       height: '10%', // Ajusta este valor según tus necesidades
       alignSelf: 'center',
-      shadowOpacity: 1,
+      shadowOpacity: 2,
       elevation: 10,
       shadowRadius: 10,
       shadowOffset: {
         width: 0,
-        height: 6,
+        height: 2,
       },
       shadowColor: 'rgba(0, 0, 0, 0.25)',
     },

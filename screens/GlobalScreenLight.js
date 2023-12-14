@@ -139,7 +139,7 @@ const GlobalScreenLight = () => {
     }
     const fecha = new Date(fechaString);
     const dia = fecha.getDate().toString().padStart(2, '0');
-    const mes = (fecha.getMonth() + 1).toString().padStart(2, '0'); // Los meses en JavaScript van de 0 a 11
+    const mes = (fecha.getMonth() + 1).toString().padStart(2, '0'); 
     const hora = fecha.getHours().toString().padStart(2, '0');
     const minutos = fecha.getMinutes().toString().padStart(2, '0');
     const segundos = fecha.getSeconds().toString().padStart(2, '0');
@@ -153,7 +153,7 @@ const GlobalScreenLight = () => {
     }
     let fecha = new Date(fechaString);
     let dia = fecha.getDate().toString().padStart(2, '0');
-    let mes = (fecha.getMonth() + 1).toString().padStart(2, '0'); // Los meses en JavaScript van de 0 a 11
+    let mes = (fecha.getMonth() + 1).toString().padStart(2, '0'); 
     let hora = fecha.getHours().toString().padStart(2, '0');
     let minutos = fecha.getMinutes().toString().padStart(2, '0');
   
@@ -355,6 +355,8 @@ const GlobalScreenLight = () => {
 )}
         </View>
         </ScrollView>
+
+
 
  
         <View style={[styles.appbar, styles.appbarChildLayout]}>
