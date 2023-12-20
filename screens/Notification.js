@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { View } from 'react-native';
-import Switch from 'react-native-switch';
+import { View, Switch } from 'react-native';
 import PushNotification from 'react-native-push-notification';
 
 const Notification = () => {
@@ -39,10 +38,7 @@ const Notification = () => {
 
   return (
     <View>
-      <Switch
-        value={notificationsEnabled}
-        onValueChange={(val) => setNotificationsEnabled(val)}
-      />
+      hola
     </View>
   );
 };
