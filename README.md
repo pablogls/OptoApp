@@ -32,12 +32,18 @@ git clone https://github.com/pablogls/OptoApp.git
 
 ## Instalar dependencias del proyecto.
 
+cd OptoApp
+
 npm install
 
 ## Correr proyecto en local.
 
 npm start
 
-## Correr en app "Expo Go" desde una red distinta a la que se hostea.
+## Correr proyecto en app "Expo Go" desde una red distinta a la que se hostea.
 
 npx expo start --tunnel
+
+## Correr proyecto en otro puerto.
+
+npx expo start -- --port=[puerto deseado]
