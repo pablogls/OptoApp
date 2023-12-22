@@ -22,19 +22,7 @@ export const styles = StyleSheet.create({
     maxHeight: "100%",
     position: "absolute",
   },
-  cardLayout: {
-    position: "absolute",
-  },
-  appbarShadowBox: {
-    shadowOpacity: 1,
-    elevation: 10,
-    shadowRadius: 10,
-    shadowOffset: {
-      width: 4,
-      height: 4,
-    },
-    shadowColor: "rgba(0, 0, 0, 0.25)",
-  },
+
   codigoLayout: {
     height: 29,
   },
@@ -86,9 +74,7 @@ export const styles = StyleSheet.create({
     position: "absolute",
   },
   datosinformeLayout: {
-    height: 27,
-    width: 308,
-    top: 150,
+    top: 5,
   },
   btnexportarLayout: {
     height: 45,
@@ -268,28 +254,40 @@ export const styles = StyleSheet.create({
     position: "absolute",
   },
   cardChild: {
-    width: "85%",
-    height: "40%",
+    width: '85%',
+    height: 0, // Ajusta la altura según sea necesario para mostrar solo el borde superior
     position: 'absolute',
     top: 150,
     left: '7.5%',
     backgroundColor: 'white',
     borderRadius: 20,
-    shadowColor: 'rgba(0, 0, 0, 0.8)', // Aumenta la opacidad para una sombra más oscura
-    shadowOffset: { width: 0, height: 0 },
-    shadowOpacity: 0.8, // Ajusta la opacidad según sea necesario
-    shadowRadius: 6, // Ajusta el radio según sea necesario
+    borderBottomWidth: 60, // Altura del borde inferior
+    borderBottomColor: 'transparent', // Hace que el borde inferior sea transparente
+    shadowColor: 'rgba(0, 0, 0, 0.8)',
+    shadowOffset: { width: 0, height: -2 },
+    shadowOpacity: 0.8,
+    shadowRadius: 5,
     elevation: 5,
     justifyContent: 'center',
     alignItems: 'center',
   },
   cardItem: {
-    top: 100,
-    width: "95%",
-    height: "48%",
-    borderRadius: Border.br_xl,
-    backgroundColor: Color.colorWhite,
-    right: -10,
+    backgroundColor: 'white',
+    borderRadius: 20,
+    width: '85%',
+    aspectRatio: 2,
+    alignSelf: 'center',
+    top: 100, // Ajusta el porcentaje según tus necesidades
+    shadowColor: 'black',
+    shadowOffset: {
+      width: 4,
+      height: 4, // Altura positiva para la sombra solo en la parte inferior
+    },
+    shadowOpacity: 0.5,
+    shadowRadius: 10,
+    elevation: 5,
+    height: '45%',
+    position: 'absolute',
   },
   codigoMquina: {
     left: "5%",
@@ -302,7 +300,7 @@ export const styles = StyleSheet.create({
     fontWeight: "500",
   },
   velocidadMxima: {
-    marginLeft: -30,
+    marginLeft: -20,
     width: 100,
     color: Color.colorBlack,
     fontSize: 11,
@@ -313,7 +311,7 @@ export const styles = StyleSheet.create({
     textAlign: 'center',
   },
   disponibilidad: {
-    marginRight: -57,
+    marginRight: -77,
     width: 100,
     color: Color.colorBlack,
     fontSize: 11,
@@ -332,6 +330,7 @@ export const styles = StyleSheet.create({
     left: "24%",
     marginLeft: -10,
     textAlign: 'center',
+    marginLeft: -7,
   },
   tiempoActivo1: {
     width: 80,
@@ -345,17 +344,23 @@ export const styles = StyleSheet.create({
   },
 
   text: {
-    marginRight: -45,
+    marginRight: -40,
     width: 100,
     color: Color.colorBlack,
     fontSize: 12,
     top: 4,
     height: 29,
     position: "absolute",
-    right: "20%",
+    right: "10%",
   },
   codigoMquinaParent: {
-    top: 10,
+    top: 0,
+    flexDirection: 'row', // Para ubicar los textos horizontalmente
+    justifyContent: 'space-between', // Para distribuir los textos de manera uniforme
+    alignItems: 'center', // Para centrar verticalmente los textos
+    borderBottomWidth: 1, // Altura de la línea
+    borderBottomColor: 'rgba(0, 0, 0, 0.1)', // Cambia la opacidad aquí
+    paddingBottom: 5, // Espacio entre la línea y los textos
   },
   menudatosinforme: {
     width: 306,

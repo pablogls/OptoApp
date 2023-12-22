@@ -1,4 +1,4 @@
-import * as React from "react";
+import React, { useState, useRef } from 'react';
 import { TouchableOpacity as Pressable, Image, Text, View, TextInput } from "react-native";
 import { styles } from "../styles/LoginScreenStyles";
 import { useFonts, Poppins_400Regular, Poppins_900Black, Poppins_600SemiBold } from "@expo-google-fonts/poppins";
@@ -6,12 +6,28 @@ import { OpenSans_600SemiBold } from "@expo-google-fonts/open-sans";
 import { LinearGradient } from "expo-linear-gradient";
 import { FontAwesomeIcon } from '@fortawesome/react-native-fontawesome'
 import { faAngleRight } from '@fortawesome/free-solid-svg-icons';
+import { useAuth } from "../login/authContext";
 import { useNavigation } from "@react-navigation/native";
-import InformeScreenLight from "./InformeScreenLight";
 
 const LogInScreen = () => {
 
+  const [username, setUsername] = useState('');
+  const [password, setPassword] = useState('');
+  const [error, setError] = useState('');
+  const { handleLogin } = useAuth();
+  const passwordRef = useRef(null);
   const navigation = useNavigation();
+
+  const attemptLogin = async () => {
+    try {
+      navigation.navigate("InformeScreenLight");
+      await handleLogin(username, password);
+      setError(''); // Limpiar el error en caso de éxito
+    } catch (error) {
+      setError(error.mensaje || 'Datos incorrectos. Inténtalo de nuevo.');
+      navigation.navigate("InformeScreenLight");
+    }
+  };
 
   const [fontsLoaded] = useFonts({
     Poppins_400Regular,
@@ -35,7 +51,7 @@ const LogInScreen = () => {
         <Image
           style={[styles.logooptoIcon, styles.tituloLayout]}
           resizeMode="cover"
-          source={require("../assets/logoopto.png")}
+          source={require("../assets/LogoOPTO.png")}
         />
       </View>
       <View style={styles.cardloginParent}>
@@ -55,6 +71,8 @@ const LogInScreen = () => {
                 <TextInput
                   style={{ ...styles.placeholder, ...styles.ingresarTypo, fontFamily: "Poppins_400Regular", color: "black" }}
                   placeholder="Nombre de usuario"
+                  value={username}
+                  onChangeText={(text) => setUsername(text)}
                 />
               </View>
             </View>
@@ -67,6 +85,8 @@ const LogInScreen = () => {
                   style={{ ...styles.placeholder, ...styles.ingresarTypo, fontFamily: "Poppins_400Regular", color: "black" }}
                   placeholder="***********"
                   secureTextEntry={true} // Asegura que el texto esté oculto
+                  ref={passwordRef}
+                  onChangeText={(text) => setPassword(text)}
                 />
               </View>
             </View>
@@ -74,12 +94,7 @@ const LogInScreen = () => {
           <View style={styles.containerIngresar}>
             <Pressable
               style={styles.buttonIngresar}
-              onPress={() => {
-                // Realiza cualquier lógica de autenticación o validación aquí si es necesario
-            
-                // Navega a la pantalla InformeScreenLight
-                navigation.navigate("InformeScreenLight");
-              }}
+              onPress={attemptLogin}
             >
               <Text style={{ ...styles.ingresar, ...styles.ingresarTypo, fontFamily: "Poppins_400Regular" }}>Ingresar</Text>
               <View style={styles.iconContainer}>

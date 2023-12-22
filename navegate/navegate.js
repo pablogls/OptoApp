@@ -8,8 +8,8 @@ const AppNavigator = () => {
   return (
     <Stack.Navigator>
       {/* Otras pantallas */}
-      <Stack.Screen name="InformeScreenLight" component={InformeScreenLight} />
       <Stack.Screen name="Login" component={LogInScreen} />
+      <Stack.Screen name="InformeScreenLight" component={InformeScreenLight} />
       {/* Otras pantallas */}
     </Stack.Navigator>
   );

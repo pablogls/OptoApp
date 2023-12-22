@@ -5,6 +5,7 @@ import LogInScreen from "./screens/LoginScreen.js";
 import InformeScreenLight from "./screens/InformeScreenLight.js";
 
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
+import { AuthProvider } from "./login/authContext.js";
 import AppNavigator from "./navegate/navegate.js";
 
 const Stack = createNativeStackNavigator();
@@ -15,16 +16,18 @@ const App = () => {
   return (
     <>
       <NavigationContainer>
-        {hideSplashScreen ? (
+        {/* {hideSplashScreen ? (
           <Stack.Navigator screenOptions={{ headerShown: false }}>
             <Stack.Screen
-              name="InformeScreenLight"
-              component={ InformeScreenLight }
+              name="LogInScreen"
+              component={ LogInScreen }
               options={{ headerShown: false }}
             />
           </Stack.Navigator>
-        ) : null}
-        {/* <AppNavigator /> */}
+        ) : null} */}
+        <AuthProvider>
+          <AppNavigator />
+        </AuthProvider>
       </NavigationContainer>
     </>
   );

@@ -116,9 +116,8 @@ const InformeScreenLight = () => {
             </View>
           </ScrollView>
         </SafeAreaView>
-        
-        <View style={[styles.cardItem, styles.cardLayout]}>
-          <View style={[ styles.appbarShadowBox]} /> 
+
+        <View style={[styles.cardItem]}>
           <View style={[styles.codigoMquinaParent]}>
             <Text style={{ ...styles.codigoMquina, ...styles.fechaFin1Layout, fontFamily: "Poppins_500Medium" }}>
               Codigo Máquina
@@ -137,27 +136,37 @@ const InformeScreenLight = () => {
               #
             </Text>
           </View>
+
+          <View style={[styles.datosinformeLayout]}>
+            <Text style={{ ...styles.codigoMquina, ...styles.fechaFin1Layout, fontFamily: "Poppins_500Medium" }}>
+              CR2
+            </Text>
+            <Text style={{ ...styles.velocidadMxima, ...styles.fechaFin1Layout, fontFamily: "Poppins_500Medium" }}>
+              36.86
+            </Text>
+            <Text style={{ ...styles.disponibilidad, ...styles.fechaFin2Layout, fontFamily: "Poppins_500Medium" }}>
+              32.67
+            </Text>
+            <Text
+              style={{ ...styles.tiempoActivo, ...styles.fechaFin1Layout, fontFamily: "Poppins_500Medium" }}>
+              20m 36s
+            </Text>
+            <Text style={{ ...styles.text, ...styles.fechaFin1Layout, fontFamily: "Poppins_500Medium" }}>
+              Ojo
+            </Text>
+          </View>
+          {/* <Pressable
+            style={[styles.vector, styles.textLayout]}
+            onPress={() => { }}
+          >
+            <Image
+              style={styles.icon}
+              resizeMode="cover"
+              source={require("../assets/verYellow.png")}
+            />
+          </Pressable> */}
         </View>
 
-        <View style={[styles.cardChild]}>
-          <View style={[styles.datosinformeLayout]}>
-            <Text style={{ ...styles.cr1, ...styles.cr2Typo, fontFamily: "Poppins_500Medium" }}>CR2</Text>
-            <Text style={{ ...styles.cr2, ...styles.cr2Typo, fontFamily: "Poppins_500Medium" }}>13m 36s</Text>
-            <Text style={{ ...styles.text1, fontFamily: "Poppins_500Medium" }}>36.86</Text>
-            <Text style={{ ...styles.cr3, ...styles.cr2Typo, fontFamily: "Poppins_500Medium" }}>32.28</Text>
-            <Pressable
-              style={[styles.vector, styles.textLayout]}
-              onPress={() => { }}
-            >
-              <Image
-                style={styles.icon}
-                resizeMode="cover"
-                source={require("../assets/verYellow.png")}
-              />
-            </Pressable>
-          </View>
-        </View>
-        
         {/* <View style={[styles.appbar, styles.appbarLayout]}>
           <View style={[styles.appbarChild, styles.appbarLayout]} />
           <View style={[styles.opcionGlobal, styles.opcionChildLayout]}>
@@ -197,7 +206,7 @@ const InformeScreenLight = () => {
             />
           </View>
         </View> */}
-        
+
         <View style={styles.btnexportarlight}>
           <Text style={{ ...styles.tiempoActivo, ...styles.opcin1Typo, fontFamily: "Poppins_500Medium" }}>Exportar</Text>
           <View style={styles.iconContainer}>
@@ -209,7 +218,7 @@ const InformeScreenLight = () => {
           </View>
         </View>
       </View>
-    </View>
+    </View >
   );
 };
 
