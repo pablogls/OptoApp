@@ -361,8 +361,37 @@ const GlobalScreenLight = () => {
 
 
 
+
  
         <View style={[styles.appbar, styles.appbarChildLayout]}>
+        <View style={styles.containerMenu}>
+          <Pressable style={styles.buttonMenu} color="#10294F" mode="contained">
+            <FontAwesomeIcon
+              icon={faEye}
+              size={23}
+              style={{ color: "#ffffff" }}
+            />
+            <Text style={styles.buttonTextMenu}>Global</Text>
+          </Pressable>
+
+          <Pressable style={styles.buttonMenu} color="#10294F" mode="contained">
+            <FontAwesomeIcon
+              icon={faFileLines}
+              size={23}
+              style={{ color: "#ffffff" }}
+            />
+            <Text style={styles.buttonTextMenu}>Informe</Text>
+          </Pressable>
+
+          <Pressable style={styles.buttonMenu} color="#10294F" mode="contained">
+            <FontAwesomeIcon
+              icon={faGear}
+              size={23}
+              style={{ color: "#ffffff" }}
+            />
+            <Text style={styles.buttonTextMenu}>Ajustes</Text>
+          </Pressable>
+        </View>
           <View style={[styles.appbarChild, styles.appbarChildLayout]} />
           <View style={[styles.opcionGlobal, styles.appbarChildLayout]}>
             <View style={[styles.opcionGlobalChild, styles.appbarChildLayout]} />
@@ -417,9 +446,12 @@ const GlobalScreenLight = () => {
       />
       </View>
       
+      
       </View>
 
       {/*  APPBAR */}
+
+
 
         {/*  APPBAR */}
 

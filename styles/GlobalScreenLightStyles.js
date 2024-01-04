@@ -25,8 +25,9 @@ export const styles = StyleSheet.create({
       borderRadius: 15,
       paddingVertical: 15,
       paddingHorizontal: 10,
-      top: "-50%",
+      top: "53%",
       width: "90%",
+      left: -25,
       height: 70, // Ajusta el ancho según tus necesidades
       maxWidth: 500, // Establece un ancho máximo si lo deseas
       alignSelf: "center", // Centra el rectángulo horizontalmente
@@ -211,6 +212,7 @@ export const styles = StyleSheet.create({
       backgroundColor: "transparent",
     },
     safearea: {
+      height: 2000,
       flex: 1,
     },
     eyeicon: {
@@ -764,7 +766,7 @@ export const styles = StyleSheet.create({
     },
     scroll: {
       top: 222,
-      height: 1000,
+      height: 1130,
       marginLeft: -156,
       left: "50%",
       width: "100%",
@@ -883,14 +885,6 @@ export const styles = StyleSheet.create({
       left: '7.3%',
       height: '10%', // Ajusta este valor según tus necesidades
       alignSelf: 'center',
-      shadowOpacity: 2,
-      elevation: 10,
-      shadowRadius: 10,
-      shadowOffset: {
-        width: 0,
-        height: 2,
-      },
-      shadowColor: 'rgba(0, 0, 0, 0.25)',
     },
   
     vectorIcon: {
@@ -959,6 +953,7 @@ export const pickerSelectStyles = StyleSheet.create({
   // Estilos específicos para el picker
   // Puedes ajustar el color, tamaño del texto, etc. según tus necesidades
   inputIOS: {
+    color: 'black',
     paddingHorizontal: 10,
     paddingVertical: 8,
     borderWidth: 0,
@@ -968,6 +963,7 @@ export const pickerSelectStyles = StyleSheet.create({
     textAlign: 'center', // Añade esta línea
 },
 inputAndroid: {
+    color: 'black',
     paddingHorizontal: 10,
     paddingVertical: 8,
     borderWidth: 0,
