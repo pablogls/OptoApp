@@ -7,6 +7,31 @@ export const styles = StyleSheet.create({
     width: '100%',
     position: "absolute",
     },
+    buttonTextMenu: {
+      color: "white",
+      textAlign: "center",
+    },
+  buttonMenu: {
+      flex: 1,
+      marginHorizontal: 5,
+      alignSelf: "stretch",
+      alignItems: "center",
+    },
+  containerMenu: {
+      flexDirection: "row",
+      alignItems: "center",
+      justifyContent: "center",
+      backgroundColor: "#10294F",
+      borderRadius: 15,
+      paddingVertical: 15,
+      paddingHorizontal: 10,
+      top: "-50%",
+      width: "90%",
+      height: 70, // Ajusta el ancho según tus necesidades
+      maxWidth: 500, // Establece un ancho máximo si lo deseas
+      alignSelf: "center", // Centra el rectángulo horizontalmente
+      marginVertical: 30, // Espaciado vertical si es necesario
+    },
     eyeiconLayout: {
       maxHeight: "100%",
       position: "absolute",
@@ -756,6 +781,7 @@ export const styles = StyleSheet.create({
       borderRadius: Border.br_xl,
       left: 0,
       top: 0,
+      opacity: 0.00
     },
     opcionGlobalChild: {
       borderTopLeftRadius: Border.br_xl,
@@ -764,6 +790,7 @@ export const styles = StyleSheet.create({
       width: 110,
       left: 0,
       top: 0,
+      opacity: 0.00
     },
     eyeicon1: {
       height: "26.67%",
@@ -784,11 +811,13 @@ export const styles = StyleSheet.create({
       color: Color.colorWhite,
       left: "50%",
       position: "absolute",
+      opacity: 0.00
     },
     opcionGlobal: {
       width: 110,
       left: 0,
       top: 0,
+      opacity: 0.00
     },
     fileicon: {
       height: "45%",
@@ -814,6 +843,7 @@ export const styles = StyleSheet.create({
       right: 110,
       width: 130,
       position: "absolute",
+      opacity: 0.00
     },
     cogicon: {
       height: "33.33%",
@@ -845,6 +875,7 @@ export const styles = StyleSheet.create({
       right: "0%",
       left: "68.57%",
       position: "absolute",
+      opacity: 0.00
     },
     appbar: {
       top: '30.5%', // Ajusta este valor según tus necesidades

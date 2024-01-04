@@ -9,6 +9,8 @@ import { TouchableOpacity as Pressable, Image, Text, View, TextInput, Padding, S
 import RNPickerSelect from 'react-native-picker-select';
 import Speedometer from 'react-native-speedometer-chart';
 import { StatusBar } from 'expo-status-bar';
+import { faEye, faFileLines, faGear } from "@fortawesome/free-solid-svg-icons";
+import { FontAwesomeIcon } from "@fortawesome/react-native-fontawesome";
 
 
 
@@ -395,9 +397,11 @@ const GlobalScreenLight = () => {
               onPress={() => {}}/>
           </View>
         </View>
+
+        
         
 
-        {/*  APPBAR */}
+        
         
         <View style={styles.selecopcionlight}>
       <RNPickerSelect
@@ -412,9 +416,15 @@ const GlobalScreenLight = () => {
         textInputProps={textInputProps}
       />
       </View>
+      
       </View>
 
+      {/*  APPBAR */}
+
+        {/*  APPBAR */}
+
       </SafeAreaView>
+      
     );
   };
   
